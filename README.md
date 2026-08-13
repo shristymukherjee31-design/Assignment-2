@@ -2,7 +2,7 @@
 
 ## Assignment Overview
 
-The **UserManager Utility** is a Bash shell script designed to automate common Linux user and group management tasks. It simplifies administrative operations such as creating teams, adding users, assigning permissions, modifying user accounts, and removing users or groups through a single command-line utility.
+The **UserManager Utility** is a Bash Shell script developed to automate basic Linux user and group management tasks. It provides a simple command-line interface to create teams, add users, manage user accounts, assign permissions, and perform common administrative operations.
 
 ---
 
@@ -12,12 +12,12 @@ The **UserManager Utility** is a Bash shell script designed to automate common L
 - Add users under a specific team
 - Automatically create user home directories
 - Create `team` and `ninja` directories
-- Assign ownership and permissions
+- Assign directory ownership and permissions
 - Change user shell
 - Change user password
 - Delete users
 - Delete teams
-- List all users and teams
+- Display available users and teams
 
 ---
 
@@ -43,9 +43,18 @@ Assignment2/
     ├── 04-user-details.png
     ├── 05-directory-structure.png
     ├── 06-permissions.png
-    ├── 07-list-command.png
-    └── 08-delete-command.png
+    ├── 07-additional-features.png
+    └── 08-delete-operations.png
 ```
+
+### Project Directory
+
+```bash
+pwd
+tree
+```
+
+![Project Structure](screenshots/01-project-folder.png)
 
 ---
 
@@ -53,37 +62,43 @@ Assignment2/
 
 ## 1. Create Team
 
-**Command**
+Creates a new Linux group.
+
+### Commands
 
 ```bash
 sudo ./UserManager.sh addTeam amigo
 sudo ./UserManager.sh addTeam unixkings
 ```
 
-**Output**
+### Output
 
-<img src="screenshots/02-add-team.png" width="900">
+![Create Team](screenshots/02-add-team.png)
 
 ---
 
 ## 2. Add User
 
-**Command**
+Creates a new user under the specified team. The script automatically creates the user's home directory along with `team` and `ninja` folders and assigns the required permissions.
+
+### Commands
 
 ```bash
 sudo ./UserManager.sh addUser Rakesh amigo
 sudo ./UserManager.sh addUser Sandeep unixkings
 ```
 
-**Output**
+### Output
 
-<img src="screenshots/03-add-user.png" width="900">
+![Add User](screenshots/03-add-user.png)
 
 ---
 
-## 3. Verify User Information
+## 3. Verify User Details
 
-**Commands**
+Verify that the users have been created successfully and assigned to the correct groups.
+
+### Commands
 
 ```bash
 id Rakesh
@@ -93,91 +108,104 @@ id Sandeep
 groups Sandeep
 ```
 
-**Output**
+### Output
 
-<img src="screenshots/04-user-details.png" width="900">
-
----
-
-## 4. Home Directory Structure
-
-**Commands**
-
-```bash
-tree /home/Rakesh
-tree /home/Sandeep
-```
-
-If `tree` is not installed:
-
-```bash
-ls -R /home/Rakesh
-ls -R /home/Sandeep
-```
-
-**Output**
-
-<img src="screenshots/05-directory-structure.png" width="900">
+![User Details](screenshots/04-user-details.png)
 
 ---
 
-## 5. Directory Permissions
+## 4. Verify Directory Structure
 
-**Commands**
+The following directory structure is created automatically for each user.
+
+```text
+/home
+├── Rakesh
+│   ├── team
+│   └── ninja
+│
+└── Sandeep
+    ├── team
+    └── ninja
+```
+
+### Commands
+
+```bash
+tree /home
+```
+
+If the `tree` command is unavailable:
+
+```bash
+ls -R /home
+```
+
+### Output
+
+![Directory Structure](screenshots/05-directory-structure.png)
+
+---
+
+## 5. Verify Permissions
+
+The script assigns the required permissions to the home directory and shared folders.
+
+### Commands
 
 ```bash
 ls -ld /home/Rakesh
-
 ls -ld /home/Rakesh/team
-
 ls -ld /home/Rakesh/ninja
+
+ls -ld /home/Sandeep
+ls -ld /home/Sandeep/team
+ls -ld /home/Sandeep/ninja
 ```
 
-**Output**
+### Output
 
-<img src="screenshots/06-permissions.png" width="900">
+![Permissions](screenshots/06-permissions.png)
 
 ---
 
-## 6. Change User Shell
+## 6. Additional Features
 
-**Command**
+### Change User Shell
 
 ```bash
 sudo ./UserManager.sh changeShell Rakesh /bin/bash
 ```
 
----
-
-## 7. Change User Password
-
-**Command**
+### Change User Password
 
 ```bash
 sudo ./UserManager.sh changePasswd Rakesh
 ```
 
----
-
-## 8. List Users and Teams
-
-**Commands**
+### List Users
 
 ```bash
 sudo ./UserManager.sh ls User
+```
 
+### List Teams
+
+```bash
 sudo ./UserManager.sh ls Team
 ```
 
-**Output**
+### Output
 
-<img src="screenshots/07-list-command.png" width="900">
+![Additional Features](screenshots/07-additional-features.png)
 
 ---
 
-## 9. Delete User and Team
+## 7. Delete User and Team
 
-**Commands**
+Deletes an existing user and team.
+
+### Commands
 
 ```bash
 sudo ./UserManager.sh delUser Rakesh
@@ -185,9 +213,9 @@ sudo ./UserManager.sh delUser Rakesh
 sudo ./UserManager.sh delTeam amigo
 ```
 
-**Output**
+### Output
 
-<img src="screenshots/08-delete-command.png" width="900">
+![Delete Operations](screenshots/08-delete-operations.png)
 
 ---
 
@@ -196,8 +224,23 @@ sudo ./UserManager.sh delTeam amigo
 | Directory | Permission | Description |
 |-----------|:----------:|-------------|
 | `/home/username` | **751** | Owner has Read, Write and Execute permissions. Group has Read and Execute permissions. Others have Execute permission only. |
-| `/home/username/team` | **770** | Owner and Team members have full access. |
-| `/home/username/ninja` | **770** | Owner and Group members have full access. |
+| `/home/username/team` | **770** | Owner and team members have full access. |
+| `/home/username/ninja` | **770** | Owner and group members have full access. |
+
+---
+
+# Commands Summary
+
+| Command | Description |
+|---------|-------------|
+| `addTeam <team>` | Create a new team |
+| `addUser <user> <team>` | Create a new user under a team |
+| `changeShell <user> <shell>` | Change the user's login shell |
+| `changePasswd <user>` | Change the user's password |
+| `delUser <user>` | Delete a user |
+| `delTeam <team>` | Delete a team |
+| `ls User` | Display all users |
+| `ls Team` | Display all teams |
 
 ---
 
@@ -205,19 +248,27 @@ sudo ./UserManager.sh delTeam amigo
 
 ```bash
 sudo ./UserManager.sh addTeam amigo
+sudo ./UserManager.sh addTeam unixkings
 
 sudo ./UserManager.sh addUser Rakesh amigo
+sudo ./UserManager.sh addUser Sandeep unixkings
+
+id Rakesh
+groups Rakesh
+
+tree /home
+
+ls -ld /home/Rakesh
+ls -ld /home/Rakesh/team
+ls -ld /home/Rakesh/ninja
 
 sudo ./UserManager.sh changeShell Rakesh /bin/bash
-
 sudo ./UserManager.sh changePasswd Rakesh
 
 sudo ./UserManager.sh ls User
-
 sudo ./UserManager.sh ls Team
 
 sudo ./UserManager.sh delUser Rakesh
-
 sudo ./UserManager.sh delTeam amigo
 ```
 
@@ -225,21 +276,28 @@ sudo ./UserManager.sh delTeam amigo
 
 # Learning Outcomes
 
-This assignment provided practical experience with:
+After completing this assignment, the following concepts were understood and implemented:
 
 - Bash Shell Scripting
 - Linux User Management
 - Linux Group Management
 - File Ownership
-- File Permissions
+- Directory Permissions
 - Command Line Arguments
 - Case Statements
-- Linux Administration Commands
+- Linux Administrative Commands
 
 ---
 
 # Conclusion
 
-The UserManager Utility provides a simple command-line solution for performing common Linux user administration tasks. It demonstrates the practical implementation of Bash scripting concepts and Linux user management commands while improving automation and reducing manual administrative effort.
+This assignment demonstrates the implementation of a Linux User Management Utility using Bash Shell Scripting. The project automates common administrative tasks such as creating teams, managing users, assigning permissions, changing user settings, and deleting users or groups. It provides practical experience with Linux user administration and shell scripting.
 
 ---
+
+# Author
+
+**Shristy Mukherjee**
+
+BCA Student  
+CCSU University
