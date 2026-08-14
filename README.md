@@ -47,16 +47,6 @@ Assignment2/
     └── 08-delete-operations.png
 ```
 
-### Project Directory
-
-```bash
-pwd
-tree
-```
-
-![Project Structure](screenshots/01-project-folder.png)
-
----
 
 # Script Usage
 
@@ -73,7 +63,8 @@ sudo ./UserManager.sh addTeam unixkings
 
 ### Output
 
-![Create Team](screenshots/02-add-team.png)
+![Create Team]<img width="951" height="308" alt="📸 Screenshot 02-add-team png" src="https://github.com/user-attachments/assets/692cf918-0711-4110-8cf1-8a86d6888f82" />
+
 
 ---
 
@@ -90,7 +81,8 @@ sudo ./UserManager.sh addUser Sandeep unixkings
 
 ### Output
 
-![Add User](screenshots/03-add-user.png)
+![Add User]<img width="953" height="240" alt="📸 Screenshot 03-add-user png" src="https://github.com/user-attachments/assets/3b41c172-4b5f-4b7c-bb2f-742bb537bf5c" />
+
 
 ---
 
@@ -110,7 +102,8 @@ groups Sandeep
 
 ### Output
 
-![User Details](screenshots/04-user-details.png)
+![User Details]<img width="956" height="298" alt="📸 Screenshot 04-user-details png" src="https://github.com/user-attachments/assets/ddc487e1-c242-49af-95e7-6aef5c26b071" />
+
 
 ---
 
@@ -143,7 +136,8 @@ ls -R /home
 
 ### Output
 
-![Directory Structure](screenshots/05-directory-structure.png)
+![Directory Structure]<img width="955" height="488" alt="📸 Screenshot 05-directory-structure png" src="https://github.com/user-attachments/assets/0cb4902b-6584-4d70-a454-50bbfd608352" />
+
 
 ---
 
@@ -165,7 +159,8 @@ ls -ld /home/Sandeep/ninja
 
 ### Output
 
-![Permissions](screenshots/06-permissions.png)
+![Permissions]<img width="956" height="412" alt="📸 Screenshot 06-permissions png" src="https://github.com/user-attachments/assets/c4d14604-28e5-40de-b559-2e87b43c8279" />
+
 
 ---
 
@@ -197,7 +192,8 @@ sudo ./UserManager.sh ls Team
 
 ### Output
 
-![Additional Features](screenshots/07-additional-features.png)
+![Additional Features]<img width="956" height="1019" alt="📸 Screenshot 07-additional-features png" src="https://github.com/user-attachments/assets/d07edf25-9ec8-47da-bc2b-d27046eb4ad5" />
+
 
 ---
 
@@ -215,7 +211,8 @@ sudo ./UserManager.sh delTeam amigo
 
 ### Output
 
-![Delete Operations](screenshots/08-delete-operations.png)
+![Delete Operations]<img width="954" height="279" alt="📸 Screenshot 08-delete-operations png" src="https://github.com/user-attachments/assets/076bb324-30b6-48dc-b033-307db0760819" />
+
 
 ---
 
